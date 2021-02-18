@@ -8,7 +8,7 @@ This project is created to ease the task for creating new web-hooks for various 
 - Clone this repo
 - Go inside the repo
 - Run ```docker-compose build``` and then ```docker-compose up```
-- Server would be running on [localhost:8001](http://localhost:8001)
+- Server would be running on [localhost:8001](http://localhost:8001/api/)
 
 ## Endpoints
 
