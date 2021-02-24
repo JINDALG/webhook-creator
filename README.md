@@ -2,7 +2,7 @@
 
 This project is created to ease the task for creating new web-hooks for various integration. 
 
-## Setup
+## Setup for API
 
 - Install docker and docker-compose
 - Clone this repo
@@ -30,3 +30,7 @@ form_data: {"key": some-key}
 POST: http://localhost:8001/api/input/{key}/
 Any data passed in body, query_params and headers will be recorded.
 ```
+
+## Setup for FE
+- Go inside the webhook_creator_app directory
+- Follow readme file
