@@ -1,0 +1,63 @@
+<div class="home">
+  <div class="container">
+    <h4 class="home__title">Homepage:</h4>
+    <div class="home__content">
+      <h4 class="home__subtitle">
+        Create a new <span class="home__subtitle-red">HTTP</span> endpoints to
+        inspect data in user friendly way!
+      </h4>
+      <button
+        type="button"
+        class="home__create__btn"
+        (click)="handleCreateButton()"
+      >
+        + Create New
+      </button>
+
+      <div class="webhooks">
+        <ul class="webhooks__list">
+          <ng-container *ngFor="let webhook of webHookList">
+            <li class="webhook">
+              <a [routerLink]="['/webhook-detail', webhook.id]">
+                <p>{{ webhook.key }}</p>
+                <span class="webhook__expiry"
+                  >Expires in {{ webhook.remaining_minutes }} minutes</span
+                >
+              </a>
+            </li>
+          </ng-container>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="dialog" [ngClass]="{ hide: !isCreateFormOpened }">
+  <div class="dialog__backdrop"></div>
+  <div class="dialog__content">
+    <div class="dialog__header">
+      <div class="dialog__header__content">
+        <p>Create Webhook</p>
+        <button type="button" (click)="closeDialog()">Close</button>
+      </div>
+    </div>
+    <div class="dialog__body">
+      <form
+        class="form"
+        [formGroup]="createWebhookForm"
+        (submit)="onWebhookFormSubmit()"
+      >
+        <label class="form__label"
+          >Key
+          <input
+            type="text"
+            class="form__control"
+            placeholder="Enter Key"
+            formControlName="key"
+          />
+        </label>
+        <button type="submit" class="form__submit">OK</button>
+      </form>
+    </div>
+  </div>
+</div>

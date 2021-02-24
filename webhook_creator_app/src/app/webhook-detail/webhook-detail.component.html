@@ -1,0 +1,50 @@
+<div class="webhook">
+  <div class="container">
+    <h4 class="webhook__title">Ednpoint Detail Page:</h4>
+    <div class="webhook__short">
+      <div class="webhook__url">
+        https://example.com/{{ webhookDetail?.key }}
+      </div>
+      <div class="webhook__expiry">
+        Expires in {{ webhookDetail?.remaining_minutes }} minutes
+      </div>
+      <button
+        class="webhook__copy"
+        ngxClipboard
+        [cbContent]="'https://example.com/' + webhookDetail?.key"
+      >
+        Copy
+      </button>
+    </div>
+
+    <ng-container *ngFor="let hit of webhookDetail?.hits">
+      <div class="webhook__detail">
+        <div class="webhook__detail__body">
+          <div>
+            <h3>Query Param</h3>
+            <p>
+              {{ hit.query_params }}
+            </p>
+          </div>
+          <div>
+            <h3>Raw Body</h3>
+            <p>
+              {{ hit.body }}
+            </p>
+          </div>
+          <div>
+            <h3>Headers</h3>
+            <p>
+              {{ hit.headers }}
+            </p>
+          </div>
+        </div>
+        <div class="webhook__detail__hit__expiry">
+          {{
+            hit.minutes === 0 ? "Few seconds ago" : hit.minutes + " minutes ago"
+          }}
+        </div>
+      </div>
+    </ng-container>
+  </div>
+</div>
